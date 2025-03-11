@@ -66,7 +66,6 @@ class StokController extends Controller
         return redirect()->back()->with('success', 'Ürün güncellendi.');
     }
     
-
     public function destroy($id)
 {
     $stok = Stok::find($id);

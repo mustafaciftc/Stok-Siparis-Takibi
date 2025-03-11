@@ -150,20 +150,43 @@
 
         .hero-section {
             background: linear-gradient(135deg, #3498db, #2c3e50);
-            padding: 120px 0;
+            padding: 50px 0;
             color: white;
             border-radius: 12px;
-            margin: 20px;
+            margin: 30px;
         }
 
         .hero-section h1 {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .hero-section p {
             font-size: 1.25rem;
             font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .hero-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-card h5 {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .hero-card p {
+            color: #495057;
+            font-size: 0.9rem;
         }
 
         .hero-section .btn {
@@ -193,42 +216,57 @@
             margin: 0 10px;
         }
 
-        .price-slider-container {
-            margin-top: 20px;
+        .filter-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
-        .slider {
+        .filter-section .form-range {
             width: 100%;
             height: 10px;
             border-radius: 5px;
             background: #ddd;
             outline: none;
             opacity: 0.7;
-            transition: opacity .2s;
+            transition: opacity 0.2s;
         }
 
-        .slider:hover {
+        .filter-section .form-range:hover {
             opacity: 1;
         }
 
-        .price-values {
+        .filter-section .form-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+
+        .filter-section .form-range::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+
+        .filter-section label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .filter-section .price-values {
             font-size: 0.9rem;
             color: #495057;
-        }
-
-        .filter-button {
-            background-color: #3498db;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            color: white;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .filter-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -277,12 +315,42 @@
     <!-- Hero Section -->
     <section class="hero-section mb-5">
         <div class="container text-center">
-            <h1 class="display-4 mb-4">Online Sipariş Sistemi</h1>
-            <p class="lead">Hızlı ve güvenli bir şekilde sipariş verin</p>
+            <h1 class="display-4 mb-4">Elektronik Dünyasına Hoş Geldiniz!</h1>
+            <p class="lead mb-4">En yeni teknolojik ürünler, uygun fiyatlarla sizlerle. Hemen keşfedin!</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-3">
+                    <div class="hero-card bg-white p-4 rounded-3 shadow-sm">
+                        <i class="bi bi-phone" style="font-size: 2.5rem; color: #3498db;"></i>
+                        <h5 class="mt-3">Akıllı Telefonlar</h5>
+                        <p class="text-muted">En yeni modeller, uygun fiyatlarla.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hero-card bg-white p-4 rounded-3 shadow-sm">
+                        <i class="bi bi-laptop" style="font-size: 2.5rem; color: #3498db;"></i>
+                        <h5 class="mt-3">Dizüstü Bilgisayarlar</h5>
+                        <p class="text-muted">Yüksek performans, taşınabilirlik.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hero-card bg-white p-4 rounded-3 shadow-sm">
+                        <i class="bi bi-headphones" style="font-size: 2.5rem; color: #3498db;"></i>
+                        <h5 class="mt-3">Kulaklıklar</h5>
+                        <p class="text-muted">Ses kalitesi ve konfor bir arada.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hero-card bg-white p-4 rounded-3 shadow-sm">
+                        <i class="bi bi-smartwatch" style="font-size: 2.5rem; color: #3498db;"></i>
+                        <h5 class="mt-3">Akıllı Saatler</h5>
+                        <p class="text-muted">Sağlık ve teknoloji bir arada.</p>
+                    </div>
+                </div>
+            </div>
             @auth
-                <a href="#urunler" class="btn btn-light btn-lg">Ürünlere gözatın</a>
+                <a href="#urunler" class="btn btn-light btn-lg mt-5">Ürünlere Gözat</a>
             @else
-                <a href="{{ route('login') }}" class="btn btn-light btn-lg">Giriş Yap</a>
+                <a href="{{ route('login') }}" class="btn btn-light btn-lg mt-5">Giriş Yap</a>
             @endauth
         </div>
     </section>
@@ -291,14 +359,19 @@
     <section id="urunler" class="container mb-5">
         <h2 class="text-center mb-4">Ürünlerimiz</h2>
 
-    <!-- Filtreleme Alanı -->
-    <div class="filter-section">
+        <!-- Filtreleme Alanı -->
+        <div class="filter-section">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <input type="number" id="minPrice" class="form-control" placeholder="Min Fiyat">
+                    <label for="minPriceRange" class="form-label">Min Fiyat: <span id="minPriceDisplay">0
+                            ₺</span></label>
+                    <input type="range" id="minPriceRange" class="form-range" min="0" max="50000" step="1000" value="0">
                 </div>
                 <div class="col-md-6">
-                    <input type="number" id="maxPrice" class="form-control" placeholder="Max Fiyat">
+                    <label for="maxPriceRange" class="form-label">Max Fiyat: <span id="maxPriceDisplay">50000
+                            ₺</span></label>
+                    <input type="range" id="maxPriceRange" class="form-range" min="0" max="50000" step="1000"
+                        value="50000">
                 </div>
                 <div class="col-md-12 text-center mt-3">
                     <button class="btn btn-primary" onclick="filterProducts()">
@@ -375,7 +448,7 @@
                     <h5>Sosyal Medya</h5>
                     <div class="social-icons">
                         <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
                         <a href="#"><i class="bi bi-instagram"></i></a>
                         <a href="#"><i class="bi bi-linkedin"></i></a>
                     </div>
@@ -391,9 +464,35 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-       function filterProducts() {
-            const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
-            const maxPrice = parseFloat(document.getElementById('maxPrice').value) || 50000;
+        const minPriceRange = document.getElementById('minPriceRange');
+        const maxPriceRange = document.getElementById('maxPriceRange');
+        const minPriceDisplay = document.getElementById('minPriceDisplay');
+        const maxPriceDisplay = document.getElementById('maxPriceDisplay');
+
+        // Min fiyat slider'ını dinle
+        minPriceRange.addEventListener('input', () => {
+            minPriceDisplay.textContent = `${minPriceRange.value} ₺`;
+            // Min fiyat, max fiyattan büyük olamaz
+            if (parseInt(minPriceRange.value) > parseInt(maxPriceRange.value)) {
+                maxPriceRange.value = minPriceRange.value;
+                maxPriceDisplay.textContent = `${maxPriceRange.value} ₺`;
+            }
+        });
+
+        // Max fiyat slider'ını dinle
+        maxPriceRange.addEventListener('input', () => {
+            maxPriceDisplay.textContent = `${maxPriceRange.value} ₺`;
+            // Max fiyat, min fiyattan küçük olamaz
+            if (parseInt(maxPriceRange.value) < parseInt(minPriceRange.value)) {
+                minPriceRange.value = maxPriceRange.value;
+                minPriceDisplay.textContent = `${minPriceRange.value} ₺`;
+            }
+        });
+
+        // Filtreleme işlemi
+        function filterProducts() {
+            const minPrice = parseFloat(minPriceRange.value);
+            const maxPrice = parseFloat(maxPriceRange.value);
             const products = document.querySelectorAll('.product-card');
 
             products.forEach(product => {

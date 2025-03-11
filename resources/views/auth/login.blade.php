@@ -101,21 +101,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-3 d-flex justify-content-between align-items-center">
-                <div class="form-check">
-                    <input type="checkbox" 
-                        class="form-check-input" 
-                        name="remember" 
-                        id="remember" 
-                        {{ old('remember') ? 'checked' : '' }}>
-                    <label class="form-check-label text-muted" for="remember">
-                        {{ __('Beni Hatırla') }}
-                    </label>
-                </div>
-                <a href="{{ route('password.request') }}" class="text-decoration-none text-primary fw-bold">
-                    {{ __('Şifremi Unuttum?') }}
-                </a>
-                </div>
+            
 
 
                 <div class="d-flex flex-column align-items-center gap-3">
@@ -123,7 +109,8 @@
                         {{ __('Giriş Yap') }}
                     </button>
                     <p class="text-muted mb-0">Kaydınız yoksa</p>
-                    <a href="{{ route('register') }}" class="text-primary fw-bold text-decoration-none">Buradan kayıt olabilirsiniz</a>
+                    <a href="{{ route('register') }}" class="text-primary fw-bold text-decoration-none">buradan <span class="text-muted mb-0">kayıt olabilirsiniz</span>
+                    </a>
                 </div>
             </form>
         </div>

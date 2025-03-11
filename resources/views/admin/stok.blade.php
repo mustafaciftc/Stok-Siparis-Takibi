@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
- .table {
+    .table {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         overflow: hidden;
@@ -36,15 +36,16 @@
         transition: background-color 0.2s ease;
     }
 
-  
+
     .table img {
         border-radius: 6px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-  .table th, td {
-    text-align: center;
-  }
+    .table th,
+    td {
+        text-align: center;
+    }
 
 
     .btn-sm {
@@ -87,66 +88,67 @@
         font-style: italic;
     }
 
-.form-control {
-    border-radius: 6px;
-    border-color: #dee2e6;
-    padding: 8px 12px;
-}
-
-.form-control:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-}
-
-.btn-primary {
-    background-color: #3498db;
-    border-color: #3498db;
-    padding: 8px 16px;
-    font-weight: 500;
-}
-
-.btn-primary:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-    }
-    .form-control, .btn {
-        width: 100%;
+    .form-control {
+        border-radius: 6px;
+        border-color: #dee2e6;
+        padding: 8px 12px;
     }
 
-    .row.g-3 {
-        flex-direction: column;
-        gap: 10px;
+    .form-control:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
     }
 
-    .table-responsive {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+    .btn-primary {
+        background-color: #3498db;
+        border-color: #3498db;
+        padding: 8px 16px;
+        font-weight: 500;
     }
 
-    .table {
-        width: 100%;
+    .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
     }
-}
 
+    @media (max-width: 768px) {
+        .container {
+            width: 100%;
+        }
+
+        .form-control,
+        .btn {
+            width: 100%;
+        }
+
+        .row.g-3 {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table {
+            width: 100%;
+        }
+    }
 </style>
 
 <body>
     <div class="container mt-4">
-         <!-- Geri Butonu -->
-         <div class="mb-3">
-            <a href="javascript:history.back()" class="btn btn-secondary">
+        <!-- Geri Butonu -->
+        <div class="mb-3">
+            <a href="/admin" class="btn btn-secondary">
                 <i class="bi bi-arrow-left"></i> Geri
             </a>
         </div>
         <h2 class="mb-3">Stok Listesi</h2>
 
         <!-- Stok Ekleme Formu -->
-        <form method="POST" action="/admin/stok" class="mb-4" enctype="multipart/form-data">            
+        <form method="POST" action="/admin/stok" class="mb-4" enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
                 <div class="col-md-3">
@@ -257,13 +259,13 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-between align-items-center mt-3">
-    <div class="text-muted">
-        Showing {{ $stoklar->firstItem() }} to {{ $stoklar->lastItem() }} of {{ $stoklar->total() }} results
-    </div>
-    <ul class="pagination mb-2">
-        {{ $stoklar->links('pagination::bootstrap-5') }}
-    </ul>
-</div>
+            <div class="text-muted">
+                Showing {{ $stoklar->firstItem() }} to {{ $stoklar->lastItem() }} of {{ $stoklar->total() }} results
+            </div>
+            <ul class="pagination mb-2">
+                {{ $stoklar->links('pagination::bootstrap-5') }}
+            </ul>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

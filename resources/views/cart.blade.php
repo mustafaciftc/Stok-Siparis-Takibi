@@ -130,6 +130,7 @@
 
 <!-- Cart Container -->
 <div class="cart-container">
+    
     <!-- Back Button -->
     <div class="back-btn">
         <a href="javascript:history.back()" class="btn btn-secondary">
@@ -138,9 +139,10 @@
     </div>
     
     <h2 class="text-center mb-4">Sepetim</h2>
+    
     <div id="cart-items">
         @if(session('cart'))
-            <form action="{{ route('checkout.show') }}" method="POST">
+            <form action="{{ route('checkout.show') }}" method="GET">
                 @csrf
                 @foreach(session('cart') as $id => $details)
                     <div class="cart-item" data-id="{{ $id }}">
@@ -154,7 +156,6 @@
                         <div class="cart-item-quantity">
                             <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity"
                                    data-id="{{ $id }}" name="products[{{ $id }}][quantity]">
-                            <button class="btn btn-primary btn-sm update-quantity" style="margin-right: 3px;" data-id="{{ $id }}" type="button">Güncelle</button>
                         </div>
                         <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}" type="button">
                             <i class="bi bi-trash"></i>
@@ -181,13 +182,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('.update-quantity').click(function () {
+        // Miktar değişikliğini dinle
+        $('.quantity').on('change', function () {
             var id = $(this).data('id');
-            var quantity = $('.quantity[data-id="' + id + '"]').val();
+            var quantity = $(this).val();
 
             if (quantity < 1) {
                 alert('Miktar 1\'den küçük olamaz.');
-                $('.quantity[data-id="' + id + '"]').val(1);
+                $(this).val(1);
                 return;
             }
 
@@ -215,6 +217,7 @@
             });
         });
 
+        // Sepetten ürün kaldırma
         $('.remove-from-cart').click(function () {
             var id = $(this).data('id');
 
