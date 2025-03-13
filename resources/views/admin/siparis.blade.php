@@ -43,6 +43,10 @@
         }
     </style>
 </head>
+    @if(Auth::check() && Auth::user()->role == 0)
+    <script>window.location.href = "/";</script>
+    <?php exit; ?>
+@endif
 <body>
     <div class="container mt-4">
         <div class="mb-3">
