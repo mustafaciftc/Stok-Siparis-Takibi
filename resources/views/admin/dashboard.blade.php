@@ -53,6 +53,11 @@
         }
     </style>
 </head>
+    
+@if(Auth::check() && Auth::user()->role == 0)
+    <script>window.location.href = "/";</script>
+    <?php exit; ?>
+@endif
 
 <body class="antialiased">
     <nav class="navbar navbar-expand-lg navbar-light">
